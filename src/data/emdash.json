@@ -1,0 +1,120 @@
+{
+  "hero": {
+    "hero_headline": "New Premium Hero Headline",
+    "hero_subheadline": "Direct access to institutional-grade, off-market residential redevelopments and value-add opportunities. Structured for professional real estate investors.",
+    "primary_cta_text": "Access Off-Market Inventory",
+    "primary_cta_link": "#contact"
+  },
+  "stats": [
+    {
+      "stat_number": "$240M+",
+      "stat_label": "Transaction Volume"
+    },
+    {
+      "stat_number": "680+",
+      "stat_label": "Assets Transacted"
+    },
+    {
+      "stat_number": "14 Days",
+      "stat_label": "Average Close Time"
+    },
+    {
+      "stat_number": "100%",
+      "stat_label": "Underwriting Fidelity"
+    }
+  ],
+  "approach": [
+    {
+      "title": "Data-Driven Underwriting",
+      "description": "We verify structural conditions, historical comps, building permits, and zoning codes to package every asset with absolute quantitative transparency. No speculative assumptions.",
+      "icon": "underwriting"
+    },
+    {
+      "title": "Off-Market Sourcing",
+      "description": "Our proprietary acquisition engine targets distressed portfolios, estate probates, and bank-owned liquidations before they ever touch the MLS or public aggregators.",
+      "icon": "sourcing"
+    },
+    {
+      "title": "Institutional Alignment",
+      "description": "We match target inventory directly to your unique buy-box parameters. We do not blast deals to large public databases; we curate placement for active sponsors.",
+      "icon": "alignment"
+    },
+    {
+      "title": "Structured Execution",
+      "description": "From immediate title clearance to active escrow management, our transactional desks operate with extreme discipline to guarantee friction-free closings.",
+      "icon": "execution"
+    }
+  ],
+  "discipline": {
+    "section_title": "Our Investment Discipline",
+    "principles": [
+      {
+        "title": "Rigorous Margin of Safety",
+        "description": "Every offering is packaged with a minimum 25% discount compared to current local market comparable values, providing immediate equity cushion."
+      },
+      {
+        "title": "Dual-Exit Underwriting",
+        "description": "We stress-test all asset packages against multiple exit strategies: immediate redevelopment arbitrage or stabilized high-yield portfolio rental holding."
+      },
+      {
+        "title": "Clean Title Guarantee",
+        "description": "We do not market properties with cloud titles or unresolved municipal liens. Every transaction undergoes rigorous pre-escrow title auditing."
+      },
+      {
+        "title": "Verified Rehab Diagnostics",
+        "description": "We build itemized cost sheets based on real-time contractor quotes and material indexes, minimizing budget overruns during execution."
+      }
+    ]
+  },
+  "audience": {
+    "dos": [
+      "Experienced sponsors and renovators with active field crews",
+      "Buy-and-hold operators seeking reliable 7%+ net cap rates",
+      "Institutional funds looking for scalable, packaged asset volume",
+      "Liquid buyers with proof of funds ready to execute in under 14 days"
+    ],
+    "donts": [
+      "Wholesale brokers looking to co-market, daisy-chain, or assign contracts",
+      "Retail owner-occupants looking for primary residences",
+      "Speculators requiring financing contingencies or extended escrow terms",
+      "Brokers attempting to split commission without direct principal representation"
+    ]
+  },
+  "schedule": {
+    "section_title": "Book a Call with Chrischiii",
+    "section_subtitle": "Book directly to review your buy box and confirm deal access.",
+    "intro_title": "15-Min Investor Intro",
+    "intro_desc": "Quick intro to learn about your goals, markets, and how I can help.",
+    "intro_link": "https://calendar.google.com/calendar/u/0/appointments/schedules/Ac7ss71XhgNxkRHvWpNwdduRdjAI7cXV_zNp_unlXlS087azMFp-fruy3b-FHCa9GwODRFC5i5riPGpQ",
+    "deep_dive_title": "30-Min Deep Dive",
+    "deep_dive_desc": "Deep dive into your buy box, funding, and strategy. Deal access setup after call.",
+    "deep_dive_link": "https://calendar.google.com/calendar/u/0/appointments/schedules/Ac7ss71XhgNxkRHvWpNwdduRdjAI7cXV_zNp_unlXlS087azMFp-fruy3b-FHCa9GwODRFC5i5riPGpQ"
+  },
+  "faqs": [
+    {
+      "question": "How do you source your off-market properties?",
+      "answer": "We source our inventory directly from owners through targeted outbound marketing, partnerships with estate executors, bankruptcy administrators, and direct relationships with institutional lenders. Every asset is held under a direct contract before we present it to our buyer pool."
+    },
+    {
+      "question": "What does your underwriting process include?",
+      "answer": "Every asset includes a comprehensive underwriting packet consisting of certified desktop valuations, local comparable sales analysis, preliminary title reports from our preferred title partners, and an itemized structural assessment with projected rehabilitation costs."
+    },
+    {
+      "question": "Do you allow financing or inspection contingencies?",
+      "answer": "To secure deep discounts, we purchase assets on an as-is, all-cash basis. Consequently, we require our buyers to perform their due diligence prior to submitting an offer. Contracts are executed with non-refundable deposits and zero financing or inspection contingencies."
+    },
+    {
+      "question": "How do I get added to the exclusive buyer list?",
+      "answer": "You must complete our onboarding questionnaire detailing your target buy-box (asset class, geography, budget) and submit verified proof of funds. This ensures we only present matching, actionable transactions directly to your acquisition team."
+    }
+  ],
+  "footer": {
+    "footer_text": "© 2026 Chrischiii Dispositions. All rights reserved. Professional Real Estate Dispositions Group.",
+    "legal_disclaimers": "Chrischiii Dispositions is a principal acquisition firm and wholesale transaction facilitator. All offerings are subject to availability, prior sale, and withdrawal. Underwritten projections are based on local comps and represent estimates only; buyers must perform independent due diligence. Corporate Broker DRE #02189431.",
+    "contact_info": {
+      "email": "acquisitions@chrischiidtr.com",
+      "phone": "(310) 555-8941",
+      "address": "8484 Wilshire Blvd, Suite 500, Beverly Hills, CA 90211"
+    }
+  }
+}

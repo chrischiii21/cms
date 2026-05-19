@@ -1,0 +1,136 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = "Chrischiii Dispositions | Premium Off-Market Real Estate Opportunities", 
+  description = "Access institutional-grade off-market value-add and residential redevelopment real estate opportunities. Underwritten to deliver real margin."
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="bg-charcoal-950 text-charcoal-100 font-sans antialiased scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body class="min-h-screen bg-charcoal-950 flex flex-col selection:bg-gold-accent selection:text-charcoal-950 overflow-x-hidden">
+    
+    <!-- Premium Navigation Bar -->
+    <header class="sticky top-0 z-50 w-full border-b border-charcoal-600/20 bg-charcoal-950/80 backdrop-blur-md transition-all duration-300">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-20 items-center justify-between">
+          <!-- Logo -->
+          <div class="flex items-center">
+            <a href="#" class="group flex flex-col font-extrabold tracking-widest text-lg leading-tight">
+              <span class="text-charcoal-100 group-hover:text-gold-accent transition-colors duration-200">CHRISCHIII</span>
+              <span class="text-xs text-gold-accent font-medium tracking-[0.25em]">DISPOSITIONS</span>
+            </a>
+          </div>
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold tracking-wider uppercase">
+            <a href="#approach" class="text-charcoal-400 hover:text-charcoal-100 transition-colors duration-200">Approach</a>
+            <a href="#discipline" class="text-charcoal-400 hover:text-charcoal-100 transition-colors duration-200">Discipline</a>
+            <a href="#audience" class="text-charcoal-400 hover:text-charcoal-100 transition-colors duration-200">Target Audience</a>
+            <a href="#schedule" class="text-charcoal-400 hover:text-charcoal-100 transition-colors duration-200">Schedule</a>
+            <a href="#faq" class="text-charcoal-400 hover:text-charcoal-100 transition-colors duration-200">FAQ</a>
+          </nav>
+
+          <!-- Navigation CTA -->
+          <div class="hidden md:flex items-center">
+            <a 
+              href="#contact" 
+              class="relative inline-flex items-center justify-center overflow-hidden rounded border border-gold-accent px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-gold-accent transition-all duration-300 hover:bg-gold-accent hover:text-charcoal-950"
+            >
+              Investor Portal
+            </a>
+          </div>
+
+          <!-- Mobile menu button -->
+          <div class="flex md:hidden">
+            <button 
+              type="button" 
+              id="mobile-menu-btn"
+              class="inline-flex items-center justify-center rounded p-2 text-charcoal-300 hover:bg-charcoal-800 hover:text-white focus:outline-none"
+              aria-label="Toggle Menu"
+            >
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" id="menu-icon-path" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div class="hidden md:hidden border-b border-charcoal-600/20 bg-charcoal-900" id="mobile-menu">
+        <div class="space-y-1 px-4 py-4 uppercase text-xs font-bold tracking-wider">
+          <a href="#approach" class="block rounded px-3 py-3 text-charcoal-300 hover:bg-charcoal-800 hover:text-charcoal-100 transition-all duration-200">Approach</a>
+          <a href="#discipline" class="block rounded px-3 py-3 text-charcoal-300 hover:bg-charcoal-800 hover:text-charcoal-100 transition-all duration-200">Discipline</a>
+          <a href="#audience" class="block rounded px-3 py-3 text-charcoal-300 hover:bg-charcoal-800 hover:text-charcoal-100 transition-all duration-200">Target Audience</a>
+          <a href="#schedule" class="block rounded px-3 py-3 text-charcoal-300 hover:bg-charcoal-800 hover:text-charcoal-100 transition-all duration-200">Schedule</a>
+          <a href="#faq" class="block rounded px-3 py-3 text-charcoal-300 hover:bg-charcoal-800 hover:text-charcoal-100 transition-all duration-200">FAQ</a>
+          <div class="mt-4 pt-4 border-t border-charcoal-600/30">
+            <a 
+              href="#contact" 
+              class="block w-full text-center rounded border border-gold-accent bg-gold-accent py-3 text-charcoal-950 hover:bg-gold-accent-hover font-bold transition-all duration-200"
+            >
+              Investor Portal
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    <!-- Simple script for mobile menu toggle -->
+    <script>
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const iconPath = document.getElementById('menu-icon-path');
+
+      if (menuBtn && mobileMenu && iconPath) {
+        menuBtn.addEventListener('click', () => {
+          const isOpen = !mobileMenu.classList.contains('hidden');
+          if (isOpen) {
+            mobileMenu.classList.add('hidden');
+            iconPath.setAttribute('d', 'M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5');
+          } else {
+            mobileMenu.classList.remove('hidden');
+            iconPath.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+          }
+        });
+
+        // Close menu when clicking links
+        mobileMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            iconPath.setAttribute('d', 'M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5');
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

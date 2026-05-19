@@ -1,0 +1,70 @@
+---
+import type { HeroSection } from '../utils/emdash';
+
+interface Props {
+  data: HeroSection;
+}
+
+const { data } = Astro.props;
+---
+
+<section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden py-24 sm:py-32">
+  <!-- Grid overlay -->
+  <div class="absolute inset-0 bg-[linear-gradient(to_right,#1b1b1e_1px,transparent_1px),linear-gradient(to_bottom,#1b1b1e_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-30"></div>
+  
+  <!-- Subtle gold ambient blur in background -->
+  <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[35rem] h-[35rem] bg-gold-accent/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full z-10">
+    <div class="max-w-4xl mx-auto text-center flex flex-col items-center">
+      
+      <!-- Minimal tag -->
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-[0.2em] bg-charcoal-900 border border-charcoal-700 text-gold-accent animate-fade-in">
+        <span class="w-1.5 h-1.5 rounded-full bg-gold-accent animate-pulse"></span>
+        Exclusive Off-Market Placements
+      </span>
+
+      <!-- Headline -->
+      <h1 class="mt-8 text-5xl sm:text-6xl md:text-7xl font-serif tracking-tight text-charcoal-100 leading-[1.15] sm:leading-[1.1] animate-slide-up uppercase">
+        {data.hero_headline}
+      </h1>
+      
+      <!-- Subheadline -->
+      <p class="mt-6 text-lg sm:text-xl text-charcoal-400 max-w-2xl font-light leading-relaxed animate-slide-up [animation-delay:200ms]">
+        {data.hero_subheadline}
+      </p>
+
+      <!-- CTAs -->
+      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center w-full sm:w-auto animate-slide-up [animation-delay:400ms]">
+        <a 
+          href={data.primary_cta_link} 
+          class="w-full sm:w-auto text-center px-8 py-4 bg-gold-accent hover:bg-gold-accent-hover text-charcoal-950 font-bold uppercase text-xs tracking-widest rounded transition-all duration-300 shadow-lg shadow-gold-accent/10 hover:shadow-gold-accent/20 hover:-translate-y-0.5 active:translate-y-0"
+        >
+          {data.primary_cta_text}
+        </a>
+        <a 
+          href="#approach" 
+          class="w-full sm:w-auto text-center px-8 py-4 border border-charcoal-600 bg-transparent text-charcoal-100 hover:border-charcoal-100 hover:bg-charcoal-900/50 font-bold uppercase text-xs tracking-widest rounded transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
+        >
+          Explore Framework
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Down indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none opacity-50 hover:opacity-100 transition-opacity duration-300">
+    <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-charcoal-400">Scroll</span>
+    <div class="w-[1px] h-12 bg-gradient-to-b from-charcoal-400 to-transparent relative overflow-hidden">
+      <div class="absolute top-0 left-0 w-full h-1/2 bg-gold-accent animate-[scroll-down_2s_infinite]"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes scroll-down {
+    0% { transform: translateY(-100%); }
+    80% { transform: translateY(200%); }
+    100% { transform: translateY(200%); }
+  }
+</style>

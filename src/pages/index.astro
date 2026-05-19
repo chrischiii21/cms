@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Stats from '../components/Stats.astro';
+import BentoApproach from '../components/BentoApproach.astro';
+import Discipline from '../components/Discipline.astro';
+import Audience from '../components/Audience.astro';
+import Schedule from '../components/Schedule.astro';
+import FAQ from '../components/FAQ.astro';
+import Footer from '../components/Footer.astro';
+
+import { fetchLandingPageData } from '../utils/emdash';
+
+// Fetch dynamic content blocks from Emdash CMS API (with rich static fallback)
+const data = await fetchLandingPageData();
+---
+
+<Layout>
+  <!-- Hero Section -->
+  <Hero data={data.hero} />
+  
+  <!-- Stats Bar -->
+  <Stats stats={data.stats} />
+  
+  <!-- Bento-Grid Approach -->
+  <BentoApproach services={data.approach} />
+  
+  <!-- Investment Discipline -->
+  <Discipline data={data.discipline} />
+  
+  <!-- Target Audience -->
+  <Audience data={data.audience} />
+  
+  <!-- Schedule Call Section -->
+  <Schedule data={data.schedule} />
+  
+  <!-- Accordion FAQ -->
+  <FAQ faqs={data.faqs} />
+  
+  <!-- Footer & Final Investor Portal Form -->
+  <Footer data={data.footer} />
+</Layout>

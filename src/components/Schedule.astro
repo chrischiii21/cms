@@ -1,0 +1,99 @@
+---
+import type { ScheduleSection } from '../utils/emdash';
+
+interface Props {
+  data: ScheduleSection;
+}
+
+const { data } = Astro.props;
+---
+
+<section id="schedule" class="py-24 sm:py-32 bg-charcoal-950 border-t border-charcoal-600/20">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="mx-auto max-w-3xl text-center">
+      <span class="text-xs font-bold uppercase tracking-[0.25em] text-gold-accent">
+        Schedule
+      </span>
+      <h2 class="mt-4 text-4xl sm:text-5xl font-serif text-charcoal-100 tracking-tight">
+        {data.section_title}
+      </h2>
+      <p class="mt-4 text-sm sm:text-base text-charcoal-400 font-light max-w-xl mx-auto leading-relaxed">
+        {data.section_subtitle}
+      </p>
+    </div>
+
+    <!-- Booking Cards Grid -->
+    <div class="mt-16 mx-auto max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+      <!-- Card 1: 15-Min Intro -->
+      <div class="bg-charcoal-800 border border-charcoal-700/60 rounded-lg p-8 sm:p-10 flex flex-col justify-between items-center text-center transition-all duration-300 hover:border-gold-accent/40 shadow-sm hover:shadow-md">
+        <div class="flex flex-col items-center">
+          <!-- Clock SVG -->
+          <div class="w-12 h-12 rounded-full bg-charcoal-900 flex items-center justify-center text-gold-accent border border-charcoal-600/30">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          
+          <h3 class="mt-6 text-xl font-serif font-bold text-charcoal-100">
+            {data.intro_title}
+          </h3>
+          <p class="mt-4 text-xs sm:text-sm text-charcoal-400 font-light leading-relaxed max-w-xs">
+            {data.intro_desc}
+          </p>
+        </div>
+
+        <a 
+          href={data.intro_link}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-8 w-full py-3 px-6 bg-charcoal-950 hover:bg-gold-accent text-white hover:text-charcoal-950 text-xs font-bold uppercase tracking-wider rounded transition-all duration-300 border border-charcoal-600 text-center"
+        >
+          Book 15-Min Call
+        </a>
+      </div>
+
+      <!-- Card 2: 30-Min Deep Dive -->
+      <div class="bg-charcoal-800 border border-charcoal-700/60 rounded-lg p-8 sm:p-10 flex flex-col justify-between items-center text-center transition-all duration-300 hover:border-gold-accent/40 shadow-sm hover:shadow-md">
+        <div class="flex flex-col items-center">
+          <!-- Calendar SVG -->
+          <div class="w-12 h-12 rounded-full bg-charcoal-900 flex items-center justify-center text-gold-accent border border-charcoal-600/30">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+            </svg>
+          </div>
+          
+          <h3 class="mt-6 text-xl font-serif font-bold text-charcoal-100">
+            {data.deep_dive_title}
+          </h3>
+          <p class="mt-4 text-xs sm:text-sm text-charcoal-400 font-light leading-relaxed max-w-xs">
+            {data.deep_dive_desc}
+          </p>
+        </div>
+
+        <a 
+          href={data.deep_dive_link}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-8 w-full py-3 px-6 bg-charcoal-950 hover:bg-gold-accent text-white hover:text-charcoal-950 text-xs font-bold uppercase tracking-wider rounded transition-all duration-300 border border-charcoal-600 text-center"
+        >
+          Book 30-Min Call
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Submit Criteria Link -->
+    <div class="mt-12 text-center">
+      <p class="text-xs sm:text-sm text-charcoal-400 font-light">
+        Prefer to submit criteria first? 
+        <a href="#contact" class="text-gold-accent hover:text-gold-accent-hover font-medium underline underline-offset-4 ml-1.5 transition-colors duration-200">
+          Apply for access &rarr;
+        </a>
+      </p>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,559 @@
+---
+import { fetchLandingPageData } from '../utils/emdash';
+import '../styles/global.css';
+
+// Fetch current content blocks to pre-populate form fields
+const data = await fetchLandingPageData();
+---
+
+<!DOCTYPE html>
+<html lang="en" class="bg-charcoal-950 text-charcoal-100 font-sans antialiased">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emdash CMS | Console</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body class="min-h-screen bg-charcoal-950 flex flex-col">
+    
+    <!-- Header -->
+    <header class="sticky top-0 z-50 w-full border-b border-charcoal-600/30 bg-charcoal-900/90 backdrop-blur-md">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] bg-gold-accent text-charcoal-100 px-2.5 py-1 rounded">EMDASH</span>
+            <span class="text-sm font-semibold tracking-wider text-charcoal-100">CONTENT MANAGEMENT CONSOLE</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <a href="/" class="text-xs font-bold uppercase tracking-wider text-charcoal-400 hover:text-charcoal-100 transition-colors duration-200">
+              View Site
+            </a>
+            <button 
+              type="button" 
+              id="save-all-btn"
+              class="px-5 py-2 bg-gold-accent hover:bg-gold-accent-hover text-charcoal-100 text-xs font-bold uppercase tracking-wider rounded transition-all duration-300 shadow-lg shadow-gold-accent/15 cursor-pointer"
+            >
+              Save Changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="flex-grow mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 w-full">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Sidebar Navigation (Tabs Selector) -->
+        <nav class="lg:col-span-3 flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 border-b lg:border-b-0 border-charcoal-600/20" aria-label="Tabs Selector">
+          <button 
+            type="button" 
+            class="tab-btn w-full text-left px-4 py-3 rounded text-sm font-bold uppercase tracking-wider bg-gold-accent text-charcoal-100" 
+            data-tab="hero-stats"
+          >
+            Hero & Stats
+          </button>
+          <button 
+            type="button" 
+            class="tab-btn w-full text-left px-4 py-3 rounded text-sm font-bold uppercase tracking-wider text-charcoal-400 hover:bg-charcoal-600/10 hover:text-charcoal-100 transition-all duration-200" 
+            data-tab="approach"
+          >
+            My Approach
+          </button>
+          <button 
+            type="button" 
+            class="tab-btn w-full text-left px-4 py-3 rounded text-sm font-bold uppercase tracking-wider text-charcoal-400 hover:bg-charcoal-600/10 hover:text-charcoal-100 transition-all duration-200" 
+            data-tab="discipline"
+          >
+            Discipline
+          </button>
+          <button 
+            type="button" 
+            class="tab-btn w-full text-left px-4 py-3 rounded text-sm font-bold uppercase tracking-wider text-charcoal-400 hover:bg-charcoal-600/10 hover:text-charcoal-100 transition-all duration-200" 
+            data-tab="audience"
+          >
+            Audience Suitability
+          </button>
+          <button 
+            type="button" 
+            class="tab-btn w-full text-left px-4 py-3 rounded text-sm font-bold uppercase tracking-wider text-charcoal-400 hover:bg-charcoal-600/10 hover:text-charcoal-100 transition-all duration-200" 
+            data-tab="faq"
+          >
+            FAQs Accordion
+          </button>
+          <button 
+            type="button" 
+            class="tab-btn w-full text-left px-4 py-3 rounded text-sm font-bold uppercase tracking-wider text-charcoal-400 hover:bg-charcoal-600/10 hover:text-charcoal-100 transition-all duration-200" 
+            data-tab="schedule"
+          >
+            Schedule Call
+          </button>
+          <button 
+            type="button" 
+            class="tab-btn w-full text-left px-4 py-3 rounded text-sm font-bold uppercase tracking-wider text-charcoal-400 hover:bg-charcoal-600/10 hover:text-charcoal-100 transition-all duration-200" 
+            data-tab="footer-legal"
+          >
+            Footer & Legal
+          </button>
+        </nav>
+
+        <!-- Form Workspace -->
+        <form id="cms-editor-form" class="lg:col-span-9 bg-charcoal-900 border border-charcoal-600/30 rounded-lg p-6 sm:p-8 space-y-8 shadow-xl">
+          
+          <!-- Tab 1: Hero & Stats -->
+          <div id="tab-hero-stats" class="tab-content space-y-8">
+            <h2 class="text-xl font-bold uppercase tracking-wide text-charcoal-100 border-b border-charcoal-600/30 pb-4 flex items-center justify-between">
+              Hero & Stats
+              <span class="text-xs text-gold-accent font-light">Section 1 & 2</span>
+            </h2>
+
+            <div class="space-y-6">
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-charcoal-300">Hero Headline</label>
+                <input type="text" name="hero_headline" value={data.hero.hero_headline} class="mt-2 block w-full rounded border border-charcoal-600/40 bg-white px-4 py-3 text-sm text-charcoal-100 focus:border-gold-accent focus:outline-none" />
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-charcoal-300">Hero Subheadline</label>
+                <textarea name="hero_subheadline" rows="3" class="mt-2 block w-full rounded border border-charcoal-600/40 bg-white px-4 py-3 text-sm text-charcoal-100 focus:border-gold-accent focus:outline-none resize-none">{data.hero.hero_subheadline}</textarea>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-xs font-bold uppercase tracking-wider text-charcoal-300">CTA Text</label>
+                  <input type="text" name="hero_cta_text" value={data.hero.primary_cta_text} class="mt-2 block w-full rounded border border-charcoal-600/40 bg-white px-4 py-3 text-sm text-charcoal-100 focus:border-gold-accent focus:outline-none" />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold uppercase tracking-wider text-charcoal-300">CTA Link</label>
+                  <input type="text" name="hero_cta_link" value={data.hero.primary_cta_link} class="mt-2 block w-full rounded border border-charcoal-600/40 bg-white px-4 py-3 text-sm text-charcoal-100 focus:border-gold-accent focus:outline-none" />
+                </div>
+              </div>
+            </div>
+
+            <div class="border-t border-charcoal-600/20 pt-8 space-y-6">
+              <h3 class="text-lg font-bold uppercase text-charcoal-200">Performance Stats Bar</h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {data.stats.map((stat, index) => (
+                  <div class="p-4 bg-charcoal-950 rounded border border-charcoal-600/20 space-y-4">
+                    <span class="text-xs font-extrabold text-gold-accent">Stat 0{index + 1}</span>
+                    <div>
+                      <label class="block text-[10px] font-bold uppercase text-charcoal-300">Value</label>
+                      <input type="text" name={`stat_number_${index}`} value={stat.stat_number} class="mt-1.5 block w-full rounded border border-charcoal-600/40 bg-white px-3 py-2 text-xs text-charcoal-100 focus:border-gold-accent focus:outline-none" />
+                    </div>
+                    <div>
+                      <label class="block text-[10px] font-bold uppercase text-charcoal-300">Label</label>
+                      <input type="text" name={`stat_label_${index}`} value={stat.stat_label} class="mt-1.5 block w-full rounded border border-charcoal-600/40 bg-white px-3 py-2 text-xs text-charcoal-100 focus:border-gold-accent focus:outline-none" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 2: My Approach -->
+          <div id="tab-approach" class="tab-content hidden space-y-8">
+            <h2 class="text-xl font-bold uppercase tracking-wide text-charcoal-100 border-b border-charcoal-600/30 pb-4 flex items-center justify-between">
+              My Approach (Core Services)
+              <span class="text-xs text-gold-accent font-light">Section 3 (Bento Grid)</span>
+            </h2>
+
+            <div class="space-y-8">
+              {data.approach.map((service, index) => (
+                <div class="p-6 bg-charcoal-950 rounded border border-charcoal-600/20 space-y-4">
+                  <div class="flex justify-between items-center">
+                    <span class="text-xs font-extrabold text-gold-accent">Service Card 0{index + 1}</span>
+                    <span class="text-[10px] text-charcoal-600 uppercase tracking-widest">
+                      {index === 1 || index === 2 ? 'Span Double Column' : 'Single Column'}
+                    </span>
+                  </div>
+                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <div class="sm:col-span-2">
+                      <label class="block text-xs font-bold uppercase text-charcoal-300">Service Title</label>
+                      <input type="text" name={`approach_title_${index}`} value={service.title} class="mt-2 block w-full rounded border border-charcoal-600/40 bg-white px-4 py-2.5 text-sm text-charcoal-100 focus:border-gold-accent focus:outline-none" />
+                    </div>
+                    <div>
+                      <label class="block text-xs font-bold uppercase text-charcoal-300">Icon Type</label>
+                      <select name={`approach_icon_${index}`} class="mt-2 block w-full rounded border border-charcoal-600/40 bg-white px-4 py-2.5 text-sm text-charcoal-100 focus:border-gold-accent focus:outline-none">
+                        <option value="underwriting" selected={service.icon === 'underwriting'}>Underwriting</option>
+                        <option value="sourcing" selected={service.icon === 'sourcing'}>Sourcing</option>
+                        <option value="alignment" selected={service.icon === 'alignment'}>Alignment</option>
+                        <option value="execution" selected={service.icon === 'execution'}>Execution</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block text-xs font-bold uppercase text-charcoal-300">Description</label>
+                    <textarea name={`approach_desc_${index}`} rows="3" class="mt-2 block w-full rounded border border-charcoal-600/40 bg-white px-4 py-2.5 text-sm text-charcoal-100 focus:border-gold-accent focus:outline-none resize-none">{service.description}</textarea>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Tab 3: Investment Discipline -->
+          <div id="tab-discipline" class="tab-content hidden space-y-8">
+            <h2 class="text-xl font-bold uppercase tracking-wide text-charcoal-100 border-b border-charcoal-600/30 pb-4 flex items-center justify-between">
+              Investment Discipline
+              <span class="text-xs text-gold-accent font-light">Section 4</span>
+            </h2>
+
+            <div class="space-y-6">
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-charcoal-300">Section Title</label>
+                <input type="text" name="discipline_title" value={data.discipline.section_title} class="mt-2 block w-full rounded border border-charcoal-600/40 bg-white px-4 py-3 text-sm text-charcoal-100 focus:border-gold-accent focus:outline-none" />
+              </div>
+
+              <div class="space-y-6 border-t border-charcoal-600/20 pt-8">
+                <h3 class="text-lg font-bold uppercase text-charcoal-200">Discipline Principles</h3>
+                {data.discipline.principles.map((principle, index) => (
+                  <div class="p-6 bg-charcoal-950 rounded border border-charcoal-600/20 space-y-4">
+                    <span class="text-xs font-extrabold text-gold-accent">Principle 0{index + 1}</span>
+                    <div>
+                      <label class="block text-xs font-bold uppercase text-charcoal-300">Title</label>
+                      <input type="text" name={`discipline_principle_title_${index}`} value={principle.title} class="mt-2 block w-full rounded border border-charcoal-600/40 bg-white px-4 py-2.5 text-sm text-charcoal-100 focus:border-gold-accent focus:outline-none" />
+                    </div>
+                    <div>
+                      <label class="block text-xs font-bold uppercase text-charcoal-300">Explanation</label>
+                      <textarea name={`discipline_principle_desc_${index}`} rows="3" class="mt-2 block w-full rounded border border-charcoal-600/40 bg-white px-4 py-2.5 text-sm text-charcoal-100 focus:border-gold-accent focus:outline-none resize-none">{principle.description}</textarea>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 4: Target Audience -->
+          <div id="tab-audience" class="tab-content hidden space-y-8">
+            <h2 class="text-xl font-bold uppercase tracking-wide text-charcoal-100 border-b border-charcoal-600/30 pb-4 flex items-center justify-between">
+              Audience Suitability
+              <span class="text-xs text-gold-accent font-light">Section 5</span>
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <!-- Do's -->
+              <div class="space-y-4">
+                <label class="block text-sm font-bold uppercase tracking-wider text-charcoal-200">Who We Work With (Do's)</label>
+                <span class="text-xs text-charcoal-400 font-light block">Add one rule/item per line</span>
+                <textarea name="audience_dos" rows="12" class="mt-2 block w-full rounded border border-charcoal-600/40 bg-white px-4 py-3 text-sm text-charcoal-100 focus:border-gold-accent focus:outline-none leading-relaxed font-light">{data.audience.dos.join('\n')}</textarea>
+              </div>
+
+              <!-- Don'ts -->
+              <div class="space-y-4">
+                <label class="block text-sm font-bold uppercase tracking-wider text-charcoal-200">What We Don't Do (Don'ts)</label>
+                <span class="text-xs text-charcoal-400 font-light block">Add one rule/item per line</span>
+                <textarea name="audience_donts" rows="12" class="mt-2 block w-full rounded border border-charcoal-600/40 bg-white px-4 py-3 text-sm text-charcoal-100 focus:border-gold-accent focus:outline-none leading-relaxed font-light">{data.audience.donts.join('\n')}</textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 5: FAQ Section -->
+          <div id="tab-faq" class="tab-content hidden space-y-8">
+            <h2 class="text-xl font-bold uppercase tracking-wide text-charcoal-100 border-b border-charcoal-600/30 pb-4 flex items-center justify-between">
+              FAQs Accordion
+              <span class="text-xs text-gold-accent font-light">Section 6</span>
+            </h2>
+
+            <div class="space-y-6">
+              {data.faqs.map((faq, index) => (
+                <div class="p-6 bg-charcoal-950 rounded border border-charcoal-600/20 space-y-4">
+                  <span class="text-xs font-extrabold text-gold-accent">Accordion Item 0{index + 1}</span>
+                  <div>
+                    <label class="block text-xs font-bold uppercase text-charcoal-300">Question</label>
+                    <input type="text" name={`faq_q_${index}`} value={faq.question} class="mt-2 block w-full rounded border border-charcoal-600/40 bg-white px-4 py-2.5 text-sm text-charcoal-100 focus:border-gold-accent focus:outline-none" />
+                  </div>
+                  <div>
+                    <label class="block text-xs font-bold uppercase text-charcoal-300">Answer</label>
+                    <textarea name={`faq_a_${index}`} rows="4" class="mt-2 block w-full rounded border border-charcoal-600/40 bg-white px-4 py-2.5 text-sm text-charcoal-100 focus:border-gold-accent focus:outline-none resize-none">{faq.answer}</textarea>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Tab 5: Schedule Call Settings -->
+          <div id="tab-schedule" class="tab-content hidden space-y-8">
+            <h2 class="text-xl font-bold uppercase tracking-wide text-charcoal-100 border-b border-charcoal-600/30 pb-4 flex items-center justify-between">
+              Schedule Call Settings
+              <span class="text-xs text-gold-accent font-light">Section 6</span>
+            </h2>
+
+            <div class="space-y-6">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-xs font-bold uppercase tracking-wider text-charcoal-300">Section Title</label>
+                  <input type="text" name="schedule_title" value={data.schedule.section_title} class="mt-2 block w-full rounded border border-charcoal-600/40 bg-white px-4 py-3 text-sm text-charcoal-100 focus:border-gold-accent focus:outline-none" />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold uppercase tracking-wider text-charcoal-300">Section Subtitle</label>
+                  <input type="text" name="schedule_subtitle" value={data.schedule.section_subtitle} class="mt-2 block w-full rounded border border-charcoal-600/40 bg-white px-4 py-3 text-sm text-charcoal-100 focus:border-gold-accent focus:outline-none" />
+                </div>
+              </div>
+
+              <div class="p-6 bg-charcoal-950 rounded border border-charcoal-600/20 space-y-4">
+                <h3 class="text-sm font-bold uppercase text-gold-700">Option 1: 15-Min Intro Call</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label class="block text-xs font-bold uppercase text-charcoal-300">Title</label>
+                    <input type="text" name="schedule_intro_title" value={data.schedule.intro_title} class="mt-2 block w-full rounded border border-charcoal-600/40 bg-white px-4 py-2.5 text-sm text-charcoal-100 focus:border-gold-accent focus:outline-none" />
+                  </div>
+                  <div>
+                    <label class="block text-xs font-bold uppercase text-charcoal-300">Google Calendar / Booking Link</label>
+                    <input type="text" name="schedule_intro_link" value={data.schedule.intro_link} class="mt-2 block w-full rounded border border-charcoal-600/40 bg-white px-4 py-2.5 text-sm text-charcoal-100 focus:border-gold-accent focus:outline-none" />
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-xs font-bold uppercase text-charcoal-300">Description</label>
+                  <textarea name="schedule_intro_desc" rows="2" class="mt-2 block w-full rounded border border-charcoal-600/40 bg-white px-4 py-2.5 text-sm text-charcoal-100 focus:border-gold-accent focus:outline-none resize-none">{data.schedule.intro_desc}</textarea>
+                </div>
+              </div>
+
+              <div class="p-6 bg-charcoal-950 rounded border border-charcoal-600/20 space-y-4">
+                <h3 class="text-sm font-bold uppercase text-gold-700">Option 2: 30-Min Deep Dive</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label class="block text-xs font-bold uppercase text-charcoal-300">Title</label>
+                    <input type="text" name="schedule_deep_dive_title" value={data.schedule.deep_dive_title} class="mt-2 block w-full rounded border border-charcoal-600/40 bg-white px-4 py-2.5 text-sm text-charcoal-100 focus:border-gold-accent focus:outline-none" />
+                  </div>
+                  <div>
+                    <label class="block text-xs font-bold uppercase text-charcoal-300">Google Calendar / Booking Link</label>
+                    <input type="text" name="schedule_deep_dive_link" value={data.schedule.deep_dive_link} class="mt-2 block w-full rounded border border-charcoal-600/40 bg-white px-4 py-2.5 text-sm text-charcoal-100 focus:border-gold-accent focus:outline-none" />
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-xs font-bold uppercase text-charcoal-300">Description</label>
+                  <textarea name="schedule_deep_dive_desc" rows="2" class="mt-2 block w-full rounded border border-charcoal-600/40 bg-white px-4 py-2.5 text-sm text-charcoal-100 focus:border-gold-accent focus:outline-none resize-none">{data.schedule.deep_dive_desc}</textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 6: Footer & Legal -->
+          <div id="tab-footer-legal" class="tab-content hidden space-y-8">
+            <h2 class="text-xl font-bold uppercase tracking-wide text-charcoal-100 border-b border-charcoal-600/30 pb-4 flex items-center justify-between">
+              Footer & Legal Settings
+              <span class="text-xs text-gold-accent font-light">Section 7</span>
+            </h2>
+
+            <div class="space-y-6">
+              <h3 class="text-lg font-bold uppercase text-charcoal-200">Contact Info</h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-xs font-bold uppercase text-charcoal-300">Acquisitions Email</label>
+                  <input type="email" name="contact_email" value={data.footer.contact_info.email} class="mt-2 block w-full rounded border border-charcoal-600/40 bg-white px-4 py-3 text-sm text-charcoal-100 focus:border-gold-accent focus:outline-none" />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold uppercase text-charcoal-300">Broker Desk Phone</label>
+                  <input type="text" name="contact_phone" value={data.footer.contact_info.phone} class="mt-2 block w-full rounded border border-charcoal-600/40 bg-white px-4 py-3 text-sm text-charcoal-100 focus:border-gold-accent focus:outline-none" />
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold uppercase text-charcoal-300">Office Physical Address</label>
+                <input type="text" name="contact_address" value={data.footer.contact_info.address} class="mt-2 block w-full rounded border border-charcoal-600/40 bg-white px-4 py-3 text-sm text-charcoal-100 focus:border-gold-accent focus:outline-none" />
+              </div>
+
+              <div class="border-t border-charcoal-600/20 pt-8 space-y-6">
+                <h3 class="text-lg font-bold uppercase text-charcoal-200">Copyright & Legal Disclosures</h3>
+                <div>
+                  <label class="block text-xs font-bold uppercase text-charcoal-300">Footer Rights Text</label>
+                  <input type="text" name="footer_text" value={data.footer.footer_text} class="mt-2 block w-full rounded border border-charcoal-600/40 bg-white px-4 py-3 text-sm text-charcoal-100 focus:border-gold-accent focus:outline-none" />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold uppercase text-charcoal-300">DRE Licensing & Legal Disclaimers</label>
+                  <textarea name="legal_disclaimers" rows="5" class="mt-2 block w-full rounded border border-charcoal-600/40 bg-white px-4 py-3 text-sm text-charcoal-100 focus:border-gold-accent focus:outline-none leading-relaxed font-light">{data.footer.legal_disclaimers}</textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+    </main>
+
+    <!-- Client-side Tab Switcher and Submission Script -->
+    <script>
+      // Tab switcher
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const tabContents = document.querySelectorAll('.tab-content');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Clear active states
+          tabBtns.forEach(b => {
+            b.classList.remove('bg-gold-accent', 'text-charcoal-100');
+            b.classList.add('text-charcoal-400', 'hover:bg-charcoal-600/10', 'hover:text-charcoal-100');
+          });
+          tabContents.forEach(c => c.classList.add('hidden'));
+
+          // Activate clicked tab
+          btn.classList.remove('text-charcoal-400', 'hover:bg-charcoal-600/10', 'hover:text-charcoal-100');
+          btn.classList.add('bg-gold-accent', 'text-charcoal-100');
+
+          const tabName = btn.getAttribute('data-tab');
+          const targetContent = document.getElementById(`tab-${tabName}`);
+          if (targetContent) {
+            targetContent.classList.remove('hidden');
+          }
+        });
+      });
+
+      // Save changes handler
+      const saveBtn = document.getElementById('save-all-btn');
+      const form = document.getElementById('cms-editor-form') as HTMLFormElement;
+
+      if (saveBtn && form) {
+        saveBtn.addEventListener('click', async () => {
+          saveBtn.innerText = "Saving...";
+          saveBtn.disabled = true;
+
+          const formData = new FormData(form);
+
+          // Parse form keys into the structured LandingPageData layout
+          const payload = {
+            hero: {
+              hero_headline: formData.get('hero_headline'),
+              hero_subheadline: formData.get('hero_subheadline'),
+              primary_cta_text: formData.get('hero_cta_text'),
+              primary_cta_link: formData.get('hero_cta_link')
+            },
+            stats: [
+              { stat_number: formData.get('stat_number_0'), stat_label: formData.get('stat_label_0') },
+              { stat_number: formData.get('stat_number_1'), stat_label: formData.get('stat_label_1') },
+              { stat_number: formData.get('stat_number_2'), stat_label: formData.get('stat_label_2') },
+              { stat_number: formData.get('stat_number_3'), stat_label: formData.get('stat_label_3') }
+            ],
+            approach: [
+              {
+                title: formData.get('approach_title_0'),
+                description: formData.get('approach_desc_0'),
+                icon: formData.get('approach_icon_0')
+              },
+              {
+                title: formData.get('approach_title_1'),
+                description: formData.get('approach_desc_1'),
+                icon: formData.get('approach_icon_1')
+              },
+              {
+                title: formData.get('approach_title_2'),
+                description: formData.get('approach_desc_2'),
+                icon: formData.get('approach_icon_2')
+              },
+              {
+                title: formData.get('approach_title_3'),
+                description: formData.get('approach_desc_3'),
+                icon: formData.get('approach_icon_3')
+              }
+            ],
+            discipline: {
+              section_title: formData.get('discipline_title'),
+              principles: [
+                { title: formData.get('discipline_principle_title_0'), description: formData.get('discipline_principle_desc_0') },
+                { title: formData.get('discipline_principle_title_1'), description: formData.get('discipline_principle_desc_1') },
+                { title: formData.get('discipline_principle_title_2'), description: formData.get('discipline_principle_desc_2') },
+                { title: formData.get('discipline_principle_title_3'), description: formData.get('discipline_principle_desc_3') }
+              ]
+            },
+            audience: {
+              dos: (formData.get('audience_dos') as string).split('\n').map(item => item.trim()).filter(item => item !== ''),
+              donts: (formData.get('audience_donts') as string).split('\n').map(item => item.trim()).filter(item => item !== '')
+            },
+            schedule: {
+              section_title: formData.get('schedule_title'),
+              section_subtitle: formData.get('schedule_subtitle'),
+              intro_title: formData.get('schedule_intro_title'),
+              intro_desc: formData.get('schedule_intro_desc'),
+              intro_link: formData.get('schedule_intro_link'),
+              deep_dive_title: formData.get('schedule_deep_dive_title'),
+              deep_dive_desc: formData.get('schedule_deep_dive_desc'),
+              deep_dive_link: formData.get('schedule_deep_dive_link')
+            },
+            faqs: [
+              { question: formData.get('faq_q_0'), answer: formData.get('faq_a_0') },
+              { question: formData.get('faq_q_1'), answer: formData.get('faq_a_1') },
+              { question: formData.get('faq_q_2'), answer: formData.get('faq_a_2') },
+              { question: formData.get('faq_q_3'), answer: formData.get('faq_a_3') }
+            ],
+            footer: {
+              footer_text: formData.get('footer_text'),
+              legal_disclaimers: formData.get('legal_disclaimers'),
+              contact_info: {
+                email: formData.get('contact_email'),
+                phone: formData.get('contact_phone'),
+                address: formData.get('contact_address')
+              }
+            }
+          };
+
+          // Toast show helper
+          function showToast(message: string, isError = false) {
+            const toast = document.getElementById('toast-notification');
+            if (!toast) return;
+            const titleEl = document.getElementById('toast-title');
+            const descEl = document.getElementById('toast-desc');
+            const iconEl = document.getElementById('toast-icon');
+            
+            if (titleEl) titleEl.innerText = isError ? 'Error Saving Changes' : 'Content Saved';
+            if (descEl) descEl.innerText = message;
+            
+            if (iconEl) {
+              if (isError) {
+                iconEl.innerText = '✕';
+                iconEl.className = 'w-6 h-6 rounded-full bg-red-600 flex items-center justify-center text-white font-bold text-sm';
+                toast.style.borderColor = '#ef4444';
+              } else {
+                iconEl.innerText = '✓';
+                iconEl.className = 'w-6 h-6 rounded-full bg-[#A88254] flex items-center justify-center text-charcoal-100 font-bold text-sm';
+                toast.style.borderColor = '#A88254';
+              }
+            }
+            
+            toast.classList.remove('translate-y-10', 'opacity-0', 'pointer-events-none');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            
+            setTimeout(() => {
+              toast.classList.add('translate-y-10', 'opacity-0', 'pointer-events-none');
+              toast.classList.remove('translate-y-0', 'opacity-100');
+            }, 7000);
+          }
+
+          try {
+            const response = await fetch('/api/content/landing-page', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+              showToast('The local JSON database and site have successfully rebuilt.', false);
+              setTimeout(() => {
+                window.location.reload();
+              }, 6500);
+            } else {
+              const err = await response.json();
+              showToast(err.error || 'Server error occurred.', true);
+            }
+          } catch (e: any) {
+            showToast(e.message || 'Connection failed.', true);
+          } finally {
+            saveBtn.innerText = "Save Changes";
+            saveBtn.disabled = false;
+          }
+        });
+      }
+    </script>
+    <!-- Toast Notification -->
+    <div 
+      id="toast-notification" 
+      class="fixed bottom-5 right-5 z-50 flex items-center gap-3 px-5 py-4 bg-[#1C1814] border border-gold-accent text-white rounded-lg shadow-2xl transform translate-y-10 opacity-0 pointer-events-none transition-all duration-500 ease-out"
+    >
+      <div id="toast-icon" class="w-6 h-6 rounded-full bg-gold-accent flex items-center justify-center text-charcoal-100 font-bold text-sm">✓</div>
+      <div class="flex flex-col">
+        <span id="toast-title" class="text-xs font-bold uppercase tracking-wider text-white">Content Saved</span>
+        <span id="toast-desc" class="text-[10px] text-gray-300 font-light mt-0.5">The local JSON database and site have successfully rebuilt.</span>
+      </div>
+    </div>
+  </body>
+</html>
